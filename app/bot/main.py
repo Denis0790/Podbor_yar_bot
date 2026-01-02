@@ -3,6 +3,7 @@ import logging
 import os
 from aiogram import Bot, Dispatcher
 
+from handlers.handler_cancel import cancel_router
 from handlers.handler_topic_answer_to_client import topic_answer_to_client_router
 from handlers.handler_topic_answer import topic_answer_router
 from handlers.client_update_info import client_update_info_router
@@ -20,6 +21,7 @@ bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 dp.include_router(start_router)
+dp.include_router(cancel_router)
 dp.include_router(client_update_info_router)
 dp.include_router(add_info_client_router)
 dp.include_router(client_registration_router)

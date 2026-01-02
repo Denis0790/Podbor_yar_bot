@@ -25,3 +25,8 @@ def get_main_menu_kb_for_client():
         resize_keyboard=True,
         is_persistent=True
     )
+
+def get_cancel_kb():
+    builder = ReplyKeyboardBuilder()
+    builder.button(text="/Отмена")
+    return builder.as_markup(resize_keyboard=True)

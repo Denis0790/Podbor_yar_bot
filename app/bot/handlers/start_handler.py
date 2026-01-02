@@ -10,13 +10,11 @@ ADMIN_IDS = [5289542722, 532858619]
 async def command_start(message: types.Message):
     user_id = message.from_user.id
 
-    # Текст приветствия
     welcome_text = (
-        "👋 **Добро пожаловать в Подбор запчастей!**\n\n"
+        "👋 **Добро пожаловать в Подбор запчастей!**\n"
         "Здесь вы можете управлять заказами и просматривать историю обслуживания.\n"
+        "Нажмите для регистрации: /registration"
     )
-
-    # Выбираем клавиатуру в зависимости от ID
     if user_id in ADMIN_IDS:
         markup = get_main_menu_kb_for_manager()
         await message.answer(
@@ -25,9 +23,7 @@ async def command_start(message: types.Message):
             parse_mode="Markdown"
         )
     else:
-        markup = get_main_menu_kb_for_client()
         await message.answer(
             f"👤 **Личный кабинет**\n\n{welcome_text}",
-            reply_markup=markup,
             parse_mode="Markdown"
         )
